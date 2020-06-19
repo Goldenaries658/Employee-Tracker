@@ -1,0 +1,29 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "A Content Management System for an employee SQL database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Goldenaries658/Employee-Tracker.git"
+  },
+  "keywords": [
+    "CMS",
+    "SQL"
+  ],
+  "author": "Jacob Houston (https://goldenaries658.github.io/Portfolio/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Goldenaries658/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/Goldenaries658/Employee-Tracker#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "console-table-printer": "^1.5.3",
+    "inquirer": "^7.2.0",
+    "mysql": "^2.18.1"
+  }
+}
