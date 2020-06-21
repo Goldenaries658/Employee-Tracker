@@ -1,0 +1,30 @@
+INSERT INTO department (name) VALUES ('Tech');
+INSERT INTO department (name) VALUES ('Grocery');
+INSERT INTO department (name) VALUES ('Health and Beauty');
+INSERT INTO department (name) VALUES ('Phoneshop');
+
+INSERT INTO role (title, salary, department_id) VALUES ('Manager', 20000, 1);
+INSERT INTO role (title, salary, department_id) VALUES ('Tech Advisor', 16000, 1);
+INSERT INTO role (title, salary, department_id) VALUES ('Manager', 20000, 2);
+INSERT INTO role (title, salary, department_id) VALUES ('Warehouse operative', 13000, 2);
+INSERT INTO role (title, salary, department_id) VALUES ('Replen', 12000, 2);
+INSERT INTO role (title, salary, department_id) VALUES ('Manager', 20000, 3);
+INSERT INTO role (title, salary, department_id) VALUES ('Beautician', 14000, 3);
+INSERT INTO role (title, salary, department_id) VALUES ('Manager', 20000, 4);
+INSERT INTO role (title, salary, department_id) VALUES ('Sales Assistant - PayM', 16000, 4);
+INSERT INTO role (title, salary, department_id) VALUES ('Sales Assistant - PayG', 14000, 4);
+
+INSERT INTO employee (first_name, last_name, role_id) VALUES ('Graham', 'Gillard', 1);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Nick', 'Mavroleon', 2, 1);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Reece', 'Wilkes', 2, 1);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Connor', 'Edwards', 2, 1);
+INSERT INTO employee (first_name, last_name, role_id) VALUES ('Kundesai', 'Muchemeyi', 3);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Kamal', 'Bayaka', 4, 5);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Abdi', 'Adamah', 5, 5);
+INSERT INTO employee (first_name, last_name, role_id) VALUES ('Sarah', 'Banks', 6);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Cherise', 'Adebayo', 7, 8);
+INSERT INTO employee (first_name, last_name, role_id) VALUES ('Matt', 'Bellhouse', 8);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Hayley', 'Gilbert', 9, 10);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Jamie', 'Lane', 9, 10);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Noman', 'Javaid', 10, 10);
+INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ('Cameron', 'Smart', 10, 10);
