@@ -1,16 +1,8 @@
 const inquirer = require('inquirer');
 const colors = require('colors');
-const mysql = require('mysql');
 
-const { viewTracker } = require('./lib/tableOperations');
-
-const connection = mysql.createConnection({
-  host: 'localhost',
-  port: 3306,
-  user: 'employee-tracker',
-  password: '',
-  database: 'employees_db',
-});
+const viewTracker = require('./lib/viewTracker');
+const connection  = require("./lib/connection");
 
 connection.connect((err) => {
   if (err) {
@@ -28,6 +20,7 @@ const teamManager = async () => {
     name: 'functionChoice',
     message: 'What would you like to do?',
     choices: ['Add', 'View', 'Update'],
+    default: true,
   });
   switch (functionChoice) {
     case 'Add':
