@@ -23,7 +23,6 @@ const teamManager = async () => {
     name: 'functionChoice',
     message: 'What would you like to do?',
     choices: ['Add', 'View', 'Update', 'Exit'],
-    default: true,
   });
   switch (functionChoice) {
     case 'Add':
