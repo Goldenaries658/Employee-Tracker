@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const colors = require('colors');
 const mysql = require('mysql');
 
-const viewTracker = require('./lib/viewTracker');
+const { viewTracker } = require('./lib/tableOperations');
 
 const connection = mysql.createConnection({
   host: 'localhost',
