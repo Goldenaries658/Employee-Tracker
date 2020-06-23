@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const colors = require('colors');
 
-const connection  = require("./lib/connection");
+const connection = require('./lib/connection');
 const viewTracker = require('./lib/viewTracker');
 const addToTracker = require('./lib/addToTracker');
 
@@ -24,6 +24,7 @@ const teamManager = async () => {
     message: 'What would you like to do?',
     choices: ['Add', 'View', 'Update', 'Exit'],
   });
+  console.clear();
   switch (functionChoice) {
     case 'Add':
       await addToTracker();
@@ -38,7 +39,8 @@ const teamManager = async () => {
       teamManager();
       break;
     default:
-      console.log('Exiting App.'.red.bold);
+      console.log('Exiting App...'.red.bold);
+      process.exit();
       break;
   }
 };
