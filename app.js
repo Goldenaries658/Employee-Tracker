@@ -1,9 +1,10 @@
 const inquirer = require('inquirer');
 const colors = require('colors');
 
-const connection = require('./lib/connection');
-const viewTracker = require('./lib/viewTracker');
-const addToTracker = require('./lib/addToTracker');
+const { connection } = require('./lib/connection');
+const { viewTracker } = require('./lib/viewTracker');
+const { addToTracker } = require('./lib/addToTracker');
+const { updateTracker } = require('./lib/updateTracker');
 
 // Connecting to server
 connection.connect((err) => {
