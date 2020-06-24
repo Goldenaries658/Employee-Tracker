@@ -18,30 +18,34 @@ connection.connect((err) => {
 
 // Main menu
 const teamManager = async () => {
-  console.log('Welcome to the Employee Tracker');
-  const { functionChoice } = await inquirer.prompt({
-    type: 'list',
-    name: 'functionChoice',
-    message: 'What would you like to do?',
-    choices: ['Add', 'View', 'Update', 'Exit'],
-  });
-  console.clear();
-  switch (functionChoice) {
-    case 'Add':
-      await addToTracker();
-      teamManager();
-      break;
-    case 'View':
-      await viewTracker();
-      teamManager();
-      break;
-    case 'Update':
-      await updateTracker();
-      teamManager();
-      break;
-    default:
-      console.log('Exiting App...'.red.bold);
-      process.exit();
-      break;
+  try {
+    console.log('Welcome to the Employee Tracker');
+    const { functionChoice } = await inquirer.prompt({
+      type: 'list',
+      name: 'functionChoice',
+      message: 'What would you like to do?',
+      choices: ['Add', 'View', 'Update', 'Exit'],
+    });
+    console.clear();
+    switch (functionChoice) {
+      case 'Add':
+        await addToTracker();
+        teamManager();
+        break;
+      case 'View':
+        await viewTracker();
+        teamManager();
+        break;
+      case 'Update':
+        await updateTracker();
+        teamManager();
+        break;
+      default:
+        console.log('Exiting App...'.red.bold);
+        process.exit();
+        break;
+    }
+  } catch (err) {
+    console.error(`ERROR - App.js - teamManager.js: ${err}`);
   }
 };
