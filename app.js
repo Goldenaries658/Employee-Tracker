@@ -1,51 +1,62 @@
 const inquirer = require('inquirer');
 const colors = require('colors');
 
-const { connection } = require('./lib/connection');
-const { viewTracker } = require('./lib/viewTracker');
-const { addToTracker } = require('./lib/addToTracker');
-const { updateTracker } = require('./lib/updateTracker');
+const connection = require('./config/connection');
+const viewTracker = require('./lib/viewTracker');
+const addToTracker = require('./lib/addToTracker');
+const updateTracker = require('./lib/updateTracker');
 
 // Connecting to server
 connection.connect((err) => {
   if (err) {
-    console.error('error connecting: ' + err.stack);
+    console.error(`Error connecting: ${err.stack}`.red.bold);
     return;
   }
-  console.log('connected as id ' + connection.threadId);
+  console.clear();
+  console.log('Connected - id: '.green + `[${connection.threadId}]`.cyan);
+  console.log(
+    `Welcome to the Employee Tracker
+`.blue.bold.underline
+  );
   teamManager();
 });
 
 // Main menu
 const teamManager = async () => {
   try {
-    console.log('Welcome to the Employee Tracker');
     const { functionChoice } = await inquirer.prompt({
       type: 'list',
       name: 'functionChoice',
       message: 'What would you like to do?',
-      choices: ['Add', 'View', 'Update', 'Exit'],
+      choices: ['Add', 'View', 'Update', 'Exit'.red],
     });
     console.clear();
     switch (functionChoice) {
       case 'Add':
         await addToTracker();
-        teamManager();
         break;
       case 'View':
         await viewTracker();
-        teamManager();
         break;
       case 'Update':
         await updateTracker();
-        teamManager();
         break;
       default:
-        console.log('Exiting App...'.red.bold);
-        process.exit();
-        break;
+        exitApp();
     }
+    const { confirmCont } = await inquirer.prompt({
+      type: 'confirm',
+      name: 'confirmCont',
+      message: 'Quit?'.red.bold,
+    });
+    console.clear();
+    confirmCont ? exitApp() : teamManager();
   } catch (err) {
     console.error(`ERROR - App.js - teamManager.js: ${err}`);
   }
+};
+
+const exitApp = () => {
+  console.log('Exiting App...'.red.bold);
+  process.exit();
 };
