@@ -47,10 +47,10 @@ const teamManager = async () => {
     const { confirmCont } = await inquirer.prompt({
       type: 'confirm',
       name: 'confirmCont',
-      message: 'Do you wish to continue?',
+      message: 'Do you want to quit the application?',
     });
     console.clear();
-    confirmCont ? teamManager() : exitApp();
+    confirmCont ? exitApp() : teamManager();
   } catch (err) {
     console.error(`ERROR - App.js - teamManager.js: ${err}`);
   }
