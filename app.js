@@ -13,7 +13,7 @@ connection.connect((err) => {
     return;
   }
   console.clear();
-  console.log('Connected - id: '.green + `[${connection.threadId}]`.cyan);
+  console.log('Connected: id'.green + `${connection.threadId}`.cyan);
   console.log(
     `Welcome to the Employee Tracker
 `.blue.bold.underline
@@ -52,7 +52,7 @@ const teamManager = async () => {
     console.clear();
     confirmCont ? exitApp() : teamManager();
   } catch (err) {
-    console.error(`ERROR - App.js - teamManager.js: ${err}`);
+    console.error(`ERROR - App.js - teamManager.js: ${err}`.red.bold);
   }
 };
 
