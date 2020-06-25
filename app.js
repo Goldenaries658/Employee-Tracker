@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const colors = require('colors');
 
-const connection = require('./lib/connection');
+const connection = require('./config/connection');
 const viewTracker = require('./lib/viewTracker');
 const addToTracker = require('./lib/addToTracker');
 const updateTracker = require('./lib/updateTracker');
