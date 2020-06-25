@@ -28,7 +28,7 @@ const teamManager = async () => {
       type: 'list',
       name: 'functionChoice',
       message: 'What would you like to do?',
-      choices: ['Add', 'View', 'Update', 'Exit'],
+      choices: ['Add', 'View', 'Update', 'Exit'.red],
     });
     console.clear();
     switch (functionChoice) {
@@ -47,7 +47,7 @@ const teamManager = async () => {
     const { confirmCont } = await inquirer.prompt({
       type: 'confirm',
       name: 'confirmCont',
-      message: 'Do you want to quit the application?',
+      message: 'Quit?'.red.bold,
     });
     console.clear();
     confirmCont ? exitApp() : teamManager();
