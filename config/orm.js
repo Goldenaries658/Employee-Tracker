@@ -1,9 +1,11 @@
-const connection = require('../config/connection');
+const connection = require('./connection');
 const colors = require('colors');
 const util = require('util');
 
+// Promisify connection
 const connectionPromise = util.promisify(connection.query).bind(connection);
 
+// Supporting functions
 const selectQueryFromTable = async (queryString) => {
   const resultArr = [];
   try {
@@ -31,7 +33,7 @@ const insertQueryIntoTable = async (queryString, valueArr) => {
   }
 };
 
-const queries = {
+const orm = {
   convertNameToId: async (table, colName, name) => {
     const queryString = `SELECT id FROM ?? WHERE ?? = ?`;
     try {
@@ -141,4 +143,4 @@ const queries = {
   },
 };
 
-module.exports = queries;
+module.exports = orm;
