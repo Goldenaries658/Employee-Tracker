@@ -1,9 +1,11 @@
-const connection = require('../config/connection');
+const connection = require('./connection');
 const colors = require('colors');
 const util = require('util');
 
+// Promisify connection
 const connectionPromise = util.promisify(connection.query).bind(connection);
 
+// Supporting functions
 const selectQueryFromTable = async (queryString) => {
   const resultArr = [];
   try {
@@ -14,7 +16,7 @@ const selectQueryFromTable = async (queryString) => {
     return resultArr;
   } catch (err) {
     console.error(
-      `ERROR - tableOperations.js - selectQueryFromTable(): ${err}`.red.bold
+      `ERROR - orm.js - selectQueryFromTable(): ${err}`.red.bold
     );
   }
 };
@@ -26,12 +28,12 @@ const insertQueryIntoTable = async (queryString, valueArr) => {
     return;
   } catch (err) {
     console.error(
-      `ERROR - tableOperations.js - insertQueryIntoTable: ${err}`.red.bold
+      `ERROR - orm.js - insertQueryIntoTable: ${err}`.red.bold
     );
   }
 };
 
-const queries = {
+const orm = {
   convertNameToId: async (table, colName, name) => {
     const queryString = `SELECT id FROM ?? WHERE ?? = ?`;
     try {
@@ -39,7 +41,7 @@ const queries = {
         .id;
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - convertNameToID(): ${err}`.red.bold
+        `ERROR - orm.js - convertNameToID(): ${err}`.red.bold
       );
     }
   },
@@ -51,7 +53,7 @@ const queries = {
       return await selectQueryFromTable(queryString);
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - selectEmployees(): ${err}`.red.bold
+        `ERROR - orm.js - selectEmployees(): ${err}`.red.bold
       );
     }
   },
@@ -65,7 +67,7 @@ const queries = {
       return result;
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - selectManagers(): ${err}`.red.bold
+        `ERROR - orm.js - selectManagers(): ${err}`.red.bold
       );
     }
   },
@@ -78,7 +80,7 @@ const queries = {
       return await selectQueryFromTable(queryString);
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - selectRoles(): ${err}`.red.bold
+        `ERROR - orm.js - selectRoles(): ${err}`.red.bold
       );
     }
   },
@@ -88,7 +90,7 @@ const queries = {
       return await selectQueryFromTable(queryString);
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - selectDepartment(): ${err}`.red.bold
+        `ERROR - orm.js - selectDepartment(): ${err}`.red.bold
       );
     }
   },
@@ -100,7 +102,7 @@ const queries = {
       return await insertQueryIntoTable(queryString, valueArr);
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - insertEmployee(): ${err}`.red.bold
+        `ERROR - orm.js - insertEmployee(): ${err}`.red.bold
       );
     }
   },
@@ -112,7 +114,7 @@ const queries = {
       return await insertQueryIntoTable(queryString, valueArr);
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - insertRole(): ${err}`.red.bold
+        `ERROR - orm.js - insertRole(): ${err}`.red.bold
       );
     }
   },
@@ -123,7 +125,7 @@ const queries = {
       return await insertQueryIntoTable(queryString, name);
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - insertDepartment(): ${err}`.red.bold
+        `ERROR - orm.js - insertDepartment(): ${err}`.red.bold
       );
     }
   },
@@ -135,10 +137,10 @@ const queries = {
       return connectionPromise(queryString, [role_id, id]);
     } catch (err) {
       console.error(
-        `ERROR - tableOperations.js - updateEmployeeRole(): ${err}`.red.bold
+        `ERROR - orm.js - updateEmployeeRole(): ${err}`.red.bold
       );
     }
   },
 };
 
-module.exports = queries;
+module.exports = orm;
